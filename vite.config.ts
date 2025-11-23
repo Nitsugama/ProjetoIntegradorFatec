@@ -6,6 +6,7 @@
   export default defineConfig({
     plugins: [react()],
     base: "/projetointegradorfatec",
+    build: { outDir: "build" },
     resolve: {
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
       alias: {
