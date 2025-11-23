@@ -1,81 +1,71 @@
-// Importação dos ícones necessários
-import { Mail, Phone, Instagram, Facebook, Music } from 'lucide-react';
+import { Mail, Phone, Gamepad2 } from 'lucide-react';
 
-// Componente do Rodapé
+// ============================================================================
+// COMPONENTE FOOTER - Rodapé da aplicação
+// ============================================================================
+
+/**
+ * Componente Footer - Rodapé com informações de contato
+ * 
+ * Exibe:
+ * - Nome e descrição da empresa
+ * - Informações de contato (e-mail e telefone)
+ * - Horário de atendimento
+ * - Copyright
+ * 
+ * O id="contato" permite que o link no header faça scroll até aqui
+ */
 export function Footer() {
   return (
-    // Footer com fundo preto
-    <footer className="bg-black text-white py-12 px-4">
-      <div className="max-w-7xl mx-auto">
-        {/* Grid de 3 colunas para desktop */}
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
+    // Container principal com fundo escuro e texto branco
+    // id="contato" é usado pelo link âncora no Header
+    <footer id="contato" className="bg-slate-900 text-white mt-auto">
+      <div className="container mx-auto px-4 py-12">
+        {/* Grid responsivo com 3 colunas em telas médias/grandes */}
+        <div className="grid md:grid-cols-3 gap-8">
           
-          {/* Coluna 1: Logo e descrição */}
+          {/* Coluna 1: Sobre a empresa */}
           <div>
-            {/* Logo da banda */}
             <div className="flex items-center gap-2 mb-4">
-              <Music className="w-6 h-6 text-red-600" />
-              <span className="tracking-wider">KOLLAPSO</span>
+              <Gamepad2 className="size-6 text-indigo-400" />
+              <span>GameRent</span>
             </div>
-            {/* Texto descritivo - EDITE AQUI */}
-            <p className="opacity-80">
-              Transformando eventos em experiências musicais memoráveis desde 2018.
+            <p className="text-slate-400">
+              Alugue os melhores jogos de tabuleiro e cartas para suas reuniões e eventos.
             </p>
           </div>
-
-          {/* Coluna 2: Informações de Contato */}
+          
+          {/* Coluna 2: Informações de contato */}
           <div>
-            <h3 className="mb-4">Contato</h3>
-            <div className="space-y-3">
-              {/* Email - ALTERE O EMAIL AQUI */}
-              <a 
-                href="mailto:contato@kollapso.com.br" 
-                className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity"
-              >
-                <Mail className="w-4 h-4 text-red-600" />
-                contato@kollapso.com.br
-              </a>
-              {/* Telefone - ALTERE O NÚMERO AQUI */}
-              <a 
-                href="tel:+5511999999999" 
-                className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity"
-              >
-                <Phone className="w-4 h-4 text-red-600" />
-                (11) 99999-9999
-              </a>
+            <h3 className="mb-4 text-indigo-400">Contato</h3>
+            <div className="space-y-2">
+              {/* E-mail */}
+              <div className="flex items-center gap-2 text-slate-400">
+                <Mail className="size-4" />
+                <span>contato@gamerent.com.br</span>
+              </div>
+              {/* Telefone */}
+              <div className="flex items-center gap-2 text-slate-400">
+                <Phone className="size-4" />
+                <span>(11) 98765-4321</span>
+              </div>
             </div>
           </div>
-
-          {/* Coluna 3: Redes Sociais */}
+          
+          {/* Coluna 3: Horário de atendimento */}
           <div>
-            <h3 className="mb-4">Redes Sociais</h3>
-            <div className="flex gap-4">
-              {/* Link do Instagram - ALTERE A URL AQUI */}
-              <a 
-                href="https://instagram.com/kollapsoband" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center hover:bg-red-600 transition-colors"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
-              {/* Link do Facebook - ALTERE A URL AQUI */}
-              <a 
-                href="https://facebook.com/kollapsoband" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center hover:bg-red-600 transition-colors"
-              >
-                <Facebook className="w-5 h-5" />
-              </a>
-            </div>
+            <h3 className="mb-4 text-indigo-400">Horário de Atendimento</h3>
+            <p className="text-slate-400">
+              Segunda a Sexta: 9h às 18h<br />
+              Sábado: 10h às 16h<br />
+              Domingo: Fechado
+            </p>
           </div>
         </div>
-
-        {/* Linha separadora e copyright */}
-        <div className="border-t border-zinc-800 pt-8 text-center opacity-60">
-          {/* Copyright - ano atualiza automaticamente */}
-          <p>&copy; {new Date().getFullYear()} Kollapso. Todos os direitos reservados.</p>
+        
+        {/* Linha de copyright */}
+        <div className="border-t border-slate-800 mt-8 pt-8 text-center text-slate-400">
+          <p>&copy; 2025 GameRent. Todos os direitos reservados.</p>
         </div>
       </div>
     </footer>

@@ -1,7 +1,7 @@
 
-  # Prototipo Site Banda Kollapso
+  # Prototipo Site Aluguel Jogos
 
-  This is a code bundle for Prototipo Site Banda Kollapso. The original project is available at https://www.figma.com/design/fYBea7JtQypKgQSxZKmpyV/Prototipo-Site-Banda-Kollapso.
+  This is a code bundle for Prototipo Site Aluguel Jogos. The original project is available at https://www.figma.com/design/aXvduecJ7cKZbHmy7BUwDh/Prototipo-Site-Aluguel-Jogos.
 
   ## Running the code
 
