@@ -22,7 +22,7 @@ const PORT = process.env.PORT || 3001;
 
 // CORS - permite que o frontend (porta 5173) acesse o backend (porta 3001)
 app.use(cors({
-  origin: 'http://localhost:5173',  // URL do frontend
+  origin: 'https://nitsugama.github.io/projetointegradorfatec',  // URL do frontend
   credentials: true
 }));
 
