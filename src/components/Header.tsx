@@ -45,7 +45,7 @@ export function Header({
             className="flex items-center gap-2 hover:opacity-80 transition-opacity"
           >
             <Gamepad2 className="size-8 text-indigo-600" />
-            <h1 className="text-indigo-600">GameRent</h1>
+            <h1 className="text-indigo-600">Games Mania</h1>
           </button>
           
           {/* Menu de navegação à direita */}

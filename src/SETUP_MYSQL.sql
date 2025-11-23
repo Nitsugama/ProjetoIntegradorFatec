@@ -112,208 +112,250 @@ CREATE TABLE reservations (
   INDEX idx_reservation_date (reservation_date)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- ============================================================================
--- INSERÇÃO DE DADOS: Jogos
--- ============================================================================
 
-INSERT INTO games (name, category, summary, description, how_to_play, price, players, duration, stock, available) VALUES
-(
-  'Magic: The Gathering',
-  'Jogo de Cartas',
-  'O icônico jogo de cartas colecionáveis onde você é um poderoso mago.',
-  'Magic: The Gathering é um jogo de cartas colecionáveis estratégico onde os jogadores assumem o papel de poderosos magos chamados Planeswalkers. Com milhares de cartas disponíveis, cada partida é única e repleta de estratégia.',
-  'Cada jogador começa com 20 pontos de vida e usa um deck de cartas. Invoque criaturas, lance feitiços e use artefatos para reduzir a vida do oponente a zero. Use mana (energia mágica) para pagar o custo das cartas.',
-  25.00,
-  '2 jogadores',
-  '30-60 minutos',
-  3,
-  TRUE
-),
-(
-  'UNO',
-  'Jogo de Cartas',
-  'O clássico jogo de cartas que todos conhecem e amam.',
-  'UNO é um jogo de cartas americano que é jogado com um baralho especialmente impresso. O objetivo é ser o primeiro a descartar todas as cartas da mão, combinando cores ou números.',
-  'O objetivo é ser o primeiro jogador a descartar todas as suas cartas. Combine cores ou números com a carta do topo da pilha de descarte. Use cartas especiais para inverter o jogo, pular jogadores ou fazer adversários comprarem cartas.',
-  15.00,
-  '2-10 jogadores',
-  '15-30 minutos',
-  5,
-  TRUE
-),
-(
-  'Xadrez',
-  'Jogo de Tabuleiro',
-  'O jogo de estratégia milenar que desafia sua mente.',
-  'Xadrez é um jogo de tabuleiro estratégico para dois jogadores, jogado em um tabuleiro quadriculado de 64 casas. Cada jogador controla 16 peças com movimentos únicos.',
-  'Cada jogador começa com 16 peças. O objetivo é dar xeque-mate no rei adversário, colocando-o em uma posição onde não pode escapar da captura. Cada tipo de peça se move de forma diferente no tabuleiro.',
-  20.00,
-  '2 jogadores',
-  '30-90 minutos',
-  4,
-  TRUE
-),
-(
-  'Banco Imobiliário',
-  'Jogo de Tabuleiro',
-  'Compre, venda e negocie propriedades neste clássico jogo de negócios.',
-  'Banco Imobiliário é um jogo de tabuleiro que simula compra e venda de propriedades. Os jogadores competem para construir um império imobiliário e levar os adversários à falência.',
-  'Role os dados e mova seu peão pelo tabuleiro. Compre propriedades disponíveis, construa casas e hotéis, e cobre aluguel dos outros jogadores. Negocie propriedades estrategicamente para formar monopólios.',
-  35.00,
-  '2-8 jogadores',
-  '60-180 minutos',
-  2,
-  TRUE
-),
-(
-  'Catan',
-  'Jogo de Tabuleiro',
-  'Colonize a ilha de Catan e construa seu império.',
-  'Em Catan, os jogadores tentam ser o senhor dominante da ilha de Catan construindo assentamentos, cidades e estradas. Colete recursos, negocie com outros jogadores e expanda seu território.',
-  'Colete recursos (madeira, tijolo, trigo, ovelha, minério) rolando dados. Construa estradas, assentamentos e cidades. Negocie recursos com outros jogadores. Primeiro a alcançar 10 pontos de vitória vence.',
-  40.00,
-  '3-4 jogadores',
-  '60-120 minutos',
-  2,
-  TRUE
-),
-(
-  'Exploding Kittens',
-  'Jogo de Cartas',
-  'Um jogo de cartas estratégico altamente explosivo para toda a família.',
-  'Exploding Kittens é um jogo de cartas para pessoas que gostam de gatinhos, explosões e lasers. É como UNO, mas com gatinhos explosivos e cabras mágicas.',
-  'Compre cartas até pegar um Exploding Kitten (gatinho explosivo). Use cartas especiais para evitar explodir: Defuse para desarmar, Skip para não comprar, See the Future para ver as próximas cartas. Último jogador vivo vence.',
-  30.00,
-  '2-5 jogadores',
-  '15 minutos',
-  3,
-  TRUE
+-- INSERIR OS JOGOS 
+
+-- WAR
+INSERT INTO games (
+    name,
+    category,
+    summary,
+    description,
+    how_to_play,
+    price,
+    players,
+    duration,
+    stock,
+    available
+) VALUES (
+    'WAR',
+    'Estrategia / Tabuleiro / Conquista',
+    'Um jogo clássico de dominação global, onde o objetivo é cumprir sua missão secreta ou conquistar territórios.',
+    'WAR é um jogo de estratégia onde os jogadores controlam exércitos e disputam territórios ao redor do mundo. Cada jogador recebe cartas de missão secreta e posiciona seus exércitos pelo mapa. Os turnos envolvem atacar territórios inimigos, reforçar tropas e conquistar regiões inteiras. O jogo combina estratégia, diplomacia, negociação e um pouco de sorte nos dados. A partida termina quando um jogador cumpre sua missão secreta ou domina completamente um oponente, dependendo da regra utilizada.',
+    'No início, cada jogador recebe uma missão secreta e distribui suas tropas pelo mapa. Na sua vez, você pode reforçar seus territórios, atacar regiões inimigas usando dados e mover tropas entre territórios conectados. Conquistar territórios rende cartas de bônus que podem ser trocadas por mais exércitos. O objetivo é completar sua missão secreta ou conquistar o mundo, dependendo da variante de regras.',
+    35.00,
+    '3-6 jogadores',
+    '90-120 minutos',
+    5,
+    TRUE
 );
 
--- ============================================================================
--- INSERÇÃO DE DADOS: Imagens dos Jogos
--- ============================================================================
+INSERT INTO game_rules (game_id, rule_text, rule_order)
+VALUES
+(1, 'Cada jogador recebe uma carta de missão secreta no início da partida.', 0),
+(1, 'Os jogadores distribuem seus exércitos pelos territórios conforme as regras iniciais.', 1),
+(1, 'Na sua vez, você pode reforçar, atacar e movimentar tropas.', 2),
+(1, 'Os ataques são feitos com dados, permitindo tentar conquistar territórios inimigos.', 3),
+(1, 'Conquistar pelo menos um território no turno garante uma carta de bônus.', 4),
+(1, 'Cartas de bônus podem ser trocadas por mais tropas quando formam combinações válidas.', 5),
+(1, 'O jogo termina quando um jogador cumpre sua missão secreta ou conquista o mapa, conforme a variante jogada.', 6);
 
-INSERT INTO game_images (game_id, image_url, display_order) VALUES
--- Magic: The Gathering
-(1, 'https://images.unsplash.com/photo-1612404730960-5c71577fca11?w=800', 1),
-(1, 'https://images.unsplash.com/photo-1607124964194-8d9e8c4f7a93?w=800', 2),
 
--- UNO
-(2, 'https://images.unsplash.com/photo-1611371805429-8b5c1b2c34ba?w=800', 1),
+INSERT INTO game_images (game_id, image_url, display_order)
+VALUES
+(1, 'https://m.media-amazon.com/images/I/612r2hkPtpL.jpg', 0),
+(1, 'https://a-static.mlcdn.com.br/1500x1500/jogo-war-de-tabuleiro-o-jogo-da-estrategia-war-edicao-especial-grow/magazineluiza/220544300/ccd22b054f25a2039bc2631b1a73bd17.jpg', 1);
 
--- Xadrez
-(3, 'https://images.unsplash.com/photo-1586165368502-1bad197a6461?w=800', 1),
-(3, 'https://images.unsplash.com/photo-1611195974226-fafc95a1d6c0?w=800', 2),
 
--- Banco Imobiliário
-(4, 'https://images.unsplash.com/photo-1592642704632-8ee7c7f23d7c?w=800', 1),
+-- IMAGEM ACAO
+INSERT INTO games (
+    name,
+    category,
+    summary,
+    description,
+    how_to_play,
+    price,
+    players,
+    duration,
+    stock,
+    available
+) VALUES (
+    'Imagem & Ação',
+    'Party Game / Desenho / Equipe',
+    'O jogo de desenho e adivinhação onde você não precisa ser um artista para ganhar.',
+    'Em Imagem & Ação, os jogadores se dividem em equipes e devem adivinhar palavras ou expressões através de desenhos. É proibido falar, escrever letras ou fazer gestos; apenas o lápis e o papel podem ser usados. Com milhares de palavras divididas em categorias, a criatividade e a rapidez são essenciais.',
+    'Uma equipe escolhe um desenhista para a rodada. Ele tira uma carta, vê a palavra correspondente e tem um tempo limitado para desenhá-la. Se a equipe acertar, move o peão no tabuleiro. As categorias variam de objetos simples a expressões complexas.',
+    90.00,
+    '4 ou mais jogadores',
+    '45-60 minutos',
+    10,
+    TRUE
+);
 
--- Catan
-(5, 'https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?w=800', 1),
-(5, 'https://images.unsplash.com/photo-1609026804615-34d12f46f370?w=800', 2),
+INSERT INTO game_rules (game_id, rule_text, rule_order)
+VALUES
+(2, 'Os jogadores são divididos em equipes.', 0),
+(2, 'O desenhista da vez não pode falar, gesticular ou escrever números/letras.', 1),
+(2, 'O desenho deve representar a palavra sorteada na carta.', 2),
+(2, 'A equipe tem um tempo limite (ampulheta) para acertar a palavra.', 3),
+(2, 'Se acertar, a equipe avança no tabuleiro; se errar, permanece no lugar.', 4),
+(2, 'Algumas casas permitem que todas as equipes tentem adivinhar ao mesmo tempo ("Todos Jogam").', 5),
+(2, 'Vence a equipe que chegar primeiro ao final do tabuleiro.', 6);
 
--- Exploding Kittens
-(6, 'https://images.unsplash.com/photo-1606167668584-78701c57f13d?w=800', 1);
+INSERT INTO game_images (game_id, image_url, display_order)
+VALUES
+(2, 'https://lojagrow.vtexassets.com/arquivos/ids/170120/01708_GROW_Imagem_-_Acao_1.png?v=637788009680830000', 0),
+(2, 'https://cdn.awsli.com.br/600x450/974/974808/produto/205557597/5991aecd96c68a378cda4b94e8942059-vmwfsm.jpg', 1);
 
--- ============================================================================
--- INSERÇÃO DE DADOS: Regras dos Jogos
--- ============================================================================
 
-INSERT INTO game_rules (game_id, rule_text, rule_order) VALUES
--- Magic: The Gathering
-(1, 'Cada jogador começa com 20 pontos de vida', 1),
-(1, 'Compre 7 cartas iniciais', 2),
-(1, 'Jogue uma terra por turno para gerar mana', 3),
-(1, 'Invoque criaturas pagando seu custo de mana', 4),
-(1, 'Ataque com suas criaturas no seu turno', 5),
-(1, 'Use feitiços e habilidades estrategicamente', 6),
+-- DETETIVE
+INSERT INTO games (
+    name,
+    category,
+    summary,
+    description,
+    how_to_play,
+    price,
+    players,
+    duration,
+    stock,
+    available
+) VALUES (
+    'Detetive',
+    'Mistério / Dedução / Tabuleiro',
+    'Desvende o mistério do assassinato. Descubra o culpado, a arma e o local do crime.',
+    'Em Detetive, um crime abalou a mansão e todos são suspeitos. Os jogadores assumem o papel de detetives que devem percorrer a casa em busca de pistas. Através de lógica e dedução, é preciso eliminar as impossibilidades para descobrir as três cartas escondidas no envelope confidencial: o assassino, a arma e o aposento.',
+    'Os jogadores lançam dados para mover seus peões entre os cômodos da mansão. Ao entrar em um cômodo, o jogador pode fazer um palpite sobre quem cometeu o crime ali e com qual arma. Outros jogadores devem refutar o palpite mostrando cartas, se as tiverem. O primeiro a fazer a acusação correta vence.',
+    120.00,
+    '3-8 jogadores',
+    '60 minutos',
+    5,
+    TRUE
+);
 
--- UNO
-(2, 'Combine por cor ou número com a carta do topo', 1),
-(2, 'Use cartas especiais para mudar o jogo', 2),
-(2, 'Grite UNO quando tiver apenas uma carta', 3),
-(2, 'O primeiro a ficar sem cartas vence', 4),
 
--- Xadrez
-(3, 'Peão move 1 casa para frente (2 no primeiro movimento)', 1),
-(3, 'Torre move em linha reta (horizontal/vertical)', 2),
-(3, 'Bispo move na diagonal', 3),
-(3, 'Cavalo move em L (2+1 casas)', 4),
-(3, 'Rainha move em qualquer direção', 5),
-(3, 'Rei move 1 casa em qualquer direção', 6),
-(3, 'Dê xeque-mate no rei adversário para vencer', 7),
+INSERT INTO game_rules (game_id, rule_text, rule_order)
+VALUES
+(3, 'Três cartas (um suspeito, uma arma, um local) são escondidas no envelope confidencial.', 0),
+(3, 'Os jogadores movem-se pelos cômodos jogando os dados.', 1),
+(3, 'Ao entrar em um cômodo, o jogador faz um palpite envolvendo aquele local.', 2),
+(3, 'O jogador à esquerda deve tentar desmentir o palpite mostrando uma carta correspondente em segredo.', 3),
+(3, 'Anote as pistas em seu bloco de notas para eliminar suspeitos.', 4),
+(3, 'A acusação final só pode ser feita uma vez por jogador; se errar, é eliminado.', 5),
+(3, 'Vence quem acertar as três cartas do envelope.', 6);
 
--- Banco Imobiliário
-(4, 'Role os dados e mova seu peão', 1),
-(4, 'Compre propriedades disponíveis quando parar nelas', 2),
-(4, 'Construa casas e hotéis nas suas propriedades', 3),
-(4, 'Cobre aluguel de outros jogadores', 4),
-(4, 'Negocie propriedades com outros jogadores', 5),
-(4, 'Não fique sem dinheiro ou você quebra!', 6),
+INSERT INTO game_images (game_id, image_url, display_order)
+VALUES
+(3, 'https://a-static.mlcdn.com.br/800x800/jogo-detetive-estrela/magazineluiza/181245800/4e2b729939b08b81746e126827d4a537.jpg', 0),
+(3, 'https://estrela.vtexassets.com/arquivos/ids/163124-800-auto?v=636655330208970000&width=800&height=auto&aspect=true', 1);
 
--- Catan
-(5, 'Colete recursos rolando dados no início do turno', 1),
-(5, 'Construa estradas (1 madeira + 1 tijolo)', 2),
-(5, 'Construa assentamentos (1 madeira + 1 tijolo + 1 trigo + 1 ovelha)', 3),
-(5, 'Negocie recursos com outros jogadores', 4),
-(5, 'Expanda seu território estrategicamente', 5),
-(5, 'Primeiro a 10 pontos de vitória vence', 6),
 
--- Exploding Kittens
-(6, 'Compre 1 carta por turno', 1),
-(6, 'Use cartas de ação estrategicamente', 2),
-(6, 'Evite pegar Exploding Kittens (gatinhos explosivos)', 3),
-(6, 'Use cartas Defuse para desarmar gatinhos explosivos', 4),
-(6, 'Último jogador não explodido vence', 5);
+-- JOGO DA VIDA
+INSERT INTO games (
+    name,
+    category,
+    summary,
+    description,
+    how_to_play,
+    price,
+    players,
+    duration,
+    stock,
+    available
+) VALUES (
+    'Jogo da Vida',
+    'Simulação / Família',
+    'Uma simulação divertida da vida real, desde a carreira até a aposentadoria.',
+    'O Jogo da Vida leva os jogadores a uma jornada cheia de surpresas, onde cada decisão conta. Escolha entre fazer faculdade ou trabalhar, case-se, tenha filhos e lide com imprevistos financeiros. O objetivo é chegar à aposentadoria com a maior fortuna acumulada.',
+    'Gire a roleta para mover seu carro pelo tabuleiro. As casas indicam eventos de vida, como receber salário, pagar taxas, ter filhos ou investir. Existem caminhos alternativos que representam escolhas de carreira e riscos. O jogo termina quando todos os jogadores se aposentam.',
+    140.00,
+    '2-6 jogadores',
+    '60-90 minutos',
+    8,
+    TRUE
+);
 
--- ============================================================================
--- INSERÇÃO DE DADOS: Usuário de Teste
--- ============================================================================
 
--- Senha: teste123 (hash bcrypt)
-INSERT INTO users (username, email, password_hash, full_name, phone) VALUES
-('admin', 'admin@gamerent.com', '$2b$10$YourHashWillBeGeneratedByBackend', 'Administrador', '(11) 98765-4321'),
-('joao', 'joao@email.com', '$2b$10$YourHashWillBeGeneratedByBackend', 'João Silva', '(11) 91234-5678'),
-('maria', 'maria@email.com', '$2b$10$YourHashWillBeGeneratedByBackend', 'Maria Santos', '(11) 99876-5432');
+INSERT INTO game_rules (game_id, rule_text, rule_order)
+VALUES
+(4, 'Gire a roleta para definir o número de casas a percorrer.', 0),
+(4, 'No início, escolha entre o caminho dos negócios ou da faculdade.', 1),
+(4, 'Receba seu salário sempre que passar ou cair na casa de pagamento.', 2),
+(4, 'Adicione pinos (pessoas) ao seu carro ao casar ou ter filhos.', 3),
+(4, 'Pague taxas e dívidas conforme as instruções das casas.', 4),
+(4, 'Ao chegar ao final, conte todo o dinheiro e valores de bens adquiridos.', 5),
+(4, 'O jogador com o maior patrimônio total vence.', 6);
 
--- ============================================================================
--- INSERÇÃO DE DADOS: Reservas de Exemplo
--- ============================================================================
+INSERT INTO game_images (game_id, image_url, display_order)
+VALUES
+(4, 'https://m.media-amazon.com/images/I/61bvPavVdqL._AC_UF894,1000_QL80_.jpg', 0),
+(4, 'https://cdn.awsli.com.br/2500x2500/2624/2624370/produto/25104764515201ea51f.jpg', 1);
 
-INSERT INTO reservations (user_id, game_id, reservation_date, status, total_price) VALUES
-(2, 1, '2025-11-25', 'active', 25.00),
-(2, 3, '2025-11-28', 'active', 20.00),
-(3, 2, '2025-11-26', 'active', 15.00),
-(3, 5, '2025-12-01', 'active', 40.00);
+-- COUP
+INSERT INTO games (
+    name,
+    category,
+    summary,
+    description,
+    how_to_play,
+    price,
+    players,
+    duration,
+    stock,
+    available
+) VALUES (
+    'Coup',
+    'Blefe / Estratégia Rápida',
+    'Um jogo de blefe intenso onde o objetivo é eliminar todas as influências dos oponentes.',
+    'Coup é um jogo de blefe ambientado no universo de The Resistance. Cada jogador possui cartas de influência com habilidades únicas, e deve manipular, enganar e se impor politicamente para sobreviver. A cada rodada você executa ações, contesta jogadas e tenta derrubar os outros jogadores sem revelar sua verdadeira mão.',
+    'Cada jogador recebe duas influências (cartas). Você pode realizar ações gerais ou ações específicas de personagens. Oponentes podem contestar suas ações, e mentir faz parte do jogo. Quando perde um confronto, você perde uma influência. O último jogador com influência vence.',
+    70.00,
+    '2-6 jogadores',
+    '10-20 minutos',
+    6,
+    TRUE
+);
 
--- ============================================================================
--- VERIFICAÇÃO: Mostrar dados inseridos
--- ============================================================================
+INSERT INTO game_rules (game_id, rule_text, rule_order)
+VALUES
+(5, 'Cada jogador começa com duas influências secretas.', 0),
+(5, 'Você pode realizar ações básicas como Renda (1 moeda) e Ajuda Externa (2 moedas).', 1),
+(5, 'Ações específicas podem ser realizadas apenas se você “tiver” o personagem correspondente (ou se blefar).', 2),
+(5, 'Qualquer jogador pode contestar sua ação. Se você for pego blefando, perde uma influência.', 3),
+(5, 'Ao acumular 7 moedas, você é obrigado a executar um Golpe (Coup) contra outro jogador.', 4),
+(5, 'Vence o último jogador com pelo menos uma influência ativa.', 5);
 
-SELECT 'Jogos cadastrados:' AS Info;
-SELECT id, name, category, price, stock FROM games;
+INSERT INTO game_images (game_id, image_url, display_order)
+VALUES
+(5, 'https://grokgames.com.br/wp-content/uploads/2014/07/caixa-Coup.png', 0),
+(5, 'https://updateordie.com/wp-content/uploads/2020/12/coup02.jpg.webp', 1);
 
-SELECT 'Imagens cadastradas:' AS Info;
-SELECT gi.id, g.name, gi.image_url FROM game_images gi JOIN games g ON gi.game_id = g.id;
+-- LOVE LETTER
+INSERT INTO games (
+    name,
+    category,
+    summary,
+    description,
+    how_to_play,
+    price,
+    players,
+    duration,
+    stock,
+    available
+) VALUES (
+    'Love Letter',
+    'Dedução / Cartas / Jogo Rápido',
+    'Um jogo leve de dedução onde você tenta entregar sua carta de amor à princesa antes dos outros.',
+    'Love Letter é um jogo rápido em que cada jogador tem apenas uma carta na mão. Em seu turno, compra outra carta e escolhe qual das duas descartar, ativando seu efeito. O objetivo é ser o último jogador restante ou terminar a rodada com a carta de maior valor.',
+    'No início da rodada, cada jogador recebe uma carta. No seu turno, compre uma carta e descarte uma delas, aplicando o efeito. Alguns efeitos permitem eliminar outros jogadores. A rodada acaba quando resta apenas um jogador ou quando o baralho termina. Quem tiver a carta mais alta vence a rodada.',
+    55.00,
+    '2-4 jogadores',
+    '15-20 minutos',
+    10,
+    TRUE
+);
 
-SELECT 'Regras cadastradas:' AS Info;
-SELECT gr.id, g.name, gr.rule_text FROM game_rules gr JOIN games g ON gr.game_id = g.id LIMIT 10;
 
-SELECT 'Usuários cadastrados:' AS Info;
-SELECT id, username, email, full_name FROM users;
+INSERT INTO game_rules (game_id, rule_text, rule_order)
+VALUES
+(6, 'Cada jogador começa com uma única carta na mão.', 0),
+(6, 'No seu turno, compre uma carta e descarte uma, ativando seu efeito.', 1),
+(6, 'Algumas cartas permitem adivinhar ou olhar cartas de outros jogadores.', 2),
+(6, 'Certas cartas eliminam jogadores da rodada.', 3),
+(6, 'Se o baralho acabar, vence quem possuir a carta de maior valor na mão.', 4),
+(6, 'O jogo é jogado em várias rodadas até que alguém alcance o número necessário de vitórias.', 5);
 
-SELECT 'Reservas cadastradas:' AS Info;
-SELECT r.id, u.username, g.name, r.reservation_date, r.status 
-FROM reservations r 
-JOIN users u ON r.user_id = u.id 
-JOIN games g ON r.game_id = g.id;
-
--- ============================================================================
--- FIM DO SCRIPT
--- ============================================================================
-
-SELECT '✅ Banco de dados GameRent criado com sucesso!' AS Status;
-SELECT 'Total de jogos:' AS Info, COUNT(*) AS Quantidade FROM games;
-SELECT 'Total de usuários:' AS Info, COUNT(*) AS Quantidade FROM users;
-SELECT 'Total de reservas:' AS Info, COUNT(*) AS Quantidade FROM reservations;
+INSERT INTO game_images (game_id, image_url, display_order)
+VALUES
+(6, 'https://67287.cdn.simplo7.net/static/67287/sku/jogos-de-tabuleiro-e-cardgames-jogo-love-letter-2a-edicao-p-1754430773427.jpg', 0),
+(6, 'https://www.mundogalapagos.com.br/ccstore/v1/images/?source=/file/v4359253277095460402/products/LVL101_02.jpg', 1);
