@@ -7,7 +7,8 @@
  * Em desenvolvimento: http://localhost:3001
  * Em produção: substitua pela URL do seu backend
  */
-const API_URL = 'http://localhost:3001/api';
+const API_URL = import.meta.env.VITE_API_URL + '/api';
+
 
 /**
  * Interface para respostas de erro padronizadas
